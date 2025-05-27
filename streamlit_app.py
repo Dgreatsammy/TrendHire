@@ -6,6 +6,38 @@ import plotly.graph_objects as go
 from datetime import datetime
 import json
 
+import streamlit as st
+from datetime import datetime
+
+# Hide the default Streamlit footer
+hide_streamlit_style = """
+<style>
+footer {visibility: hidden;}
+.stApp > footer {visibility: hidden;}
+#MainMenu {visibility: hidden;}
+</style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
+# Add your custom footer
+current_year = datetime.now().year
+custom_footer = f"""
+<div style="
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: transparent;
+    color: #808080;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+">
+    © {current_year} Your App Name - Built with Streamlit
+</div>
+"""
+st.markdown(custom_footer, unsafe_allow_html=True)
+
 # Configuration
 API_BASE_URL = "https://trendhire.onrender.com"  # Replace with your Railway URL
 
