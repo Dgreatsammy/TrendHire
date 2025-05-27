@@ -1,4 +1,20 @@
 from fastapi import FastAPI
+import sentry_sdk
+
+sentry_sdk.init(
+    dsn="https://1f8c5a2d1770a4e90c63d422050a455b@o4509340733669376.ingest.us.sentry.io/4509340752478213",
+    # Add data like request headers and IP for users,
+    # see https://docs.sentry.io/platforms/python/data-management/data-collected/ for more info
+    send_default_pii=True,
+)
+
+app = FastAPI()
+
+@app.get("/sentry-debug")
+async def trigger_error():
+    division_by_zero = 1 / 0
+
+from fastapi import FastAPI
 import os
 
 app = FastAPI(title="TrendHire API", version="1.0.0")
